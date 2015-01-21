@@ -122,6 +122,8 @@ function initDisplay(container) {
 
     var listener = launchpad.listener || new LaunchpadListener();
 
+    var btnNames = ["^", "v", "<", ">", "SES", "USR1", "USR2", "MIX", "VOL", "PAN", "SNDA", "SNDB", "STOP","TRCK", "SOLO", "ARM"];
+
     for (var x = 0; x < 9; x++) {
         for (var y = 0; y < 9; y++) {
             if (x == 8 && y == 0) continue;
@@ -129,9 +131,11 @@ function initDisplay(container) {
 
             // Round buttons on top and right sides
             if (x == 8 || y == 0) {
+                var centerX = (2 + 12 * x + 5).toString();
+                var centerY = (2 + 12 * y + 5).toString();
                 pad = document.createElementNS(SVGNS, "circle");
-                pad.setAttribute("cx", (2 + 12 * x + 5).toString());
-                pad.setAttribute("cy", (2 + 12 * y + 5).toString());
+                pad.setAttribute("cx", centerX);
+                pad.setAttribute("cy", centerY);
                 pad.setAttribute("r", "4");
                 pad.onmousedown = (function (pX, pY) {
                     return function (e) {
@@ -149,6 +153,28 @@ function initDisplay(container) {
                         listener.onButtonReleased(pX, pY - 1);
                     }
                 })(x, y);
+                pad.setAttribute("id", "key" + x + y);
+                pad.style.fill = launchpad.colors[0][0];
+                svg.appendChild(pad);
+
+                // Button text
+                var btnName;
+                if (y==0) {
+                    btnName = btnNames[x]
+                } else {
+                    btnName = btnNames[7+y];
+                }
+                var txtEl = document.createElementNS(SVGNS, "text");
+                txtEl.setAttribute("text-anchor","middle");
+                txtEl.setAttribute("x",centerX);
+                txtEl.setAttribute("y",centerY);
+                txtEl.setAttribute("font-size","12%");
+                txtEl.setAttribute("font-family","sans-serif");
+                txtEl.setAttribute("font-weight","bold");
+                txtEl.setAttribute("pointer-events","none");
+                var txt = document.createTextNode(btnName);
+                txtEl.appendChild(txt);
+                svg.appendChild(txtEl);
             }
 
             // Square pads
@@ -172,11 +198,10 @@ function initDisplay(container) {
                         listener.onPadReleased(pX, pY - 1);
                     }
                 })(x, y);
+                pad.setAttribute("id", "key" + x + y);
+                pad.style.fill = launchpad.colors[0][0];
+                svg.appendChild(pad);
             }
-
-            pad.setAttribute("id", "key" + x + y);
-            pad.style.fill = launchpad.colors[0][0];
-            svg.appendChild(pad);
         }
     }
 }
