@@ -1,7 +1,7 @@
 LP4J - A Launchpad API for Java
 ====
 
-[![Build Status](https://buildhive.cloudbees.com/job/OlivierCroisier/job/LP4J/badge/icon)](https://buildhive.cloudbees.com/job/OlivierCroisier/job/LP4J/)
+[![Build Status](https://travis-ci.org/OlivierCroisier/LP4J.svg)](https://travis-ci.org/OlivierCroisier/LP4J)
 
 Launchpad is a midi device built by Novation, used to drive computer-assisted music creation applications such as Ableton Live.
 
