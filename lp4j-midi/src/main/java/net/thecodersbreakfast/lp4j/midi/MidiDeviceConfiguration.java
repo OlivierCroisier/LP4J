@@ -112,7 +112,7 @@ public class MidiDeviceConfiguration {
     public static MidiDevice autodetectInputDevice() throws MidiUnavailableException {
         MidiDevice.Info[] midiDeviceInfo = MidiSystem.getMidiDeviceInfo();
         for (MidiDevice.Info info : midiDeviceInfo) {
-            if (info.getDescription().contains(DEVICE_SIGNATURE)) {
+            if (info.getDescription().contains(DEVICE_SIGNATURE) || info.getName().contains(DEVICE_SIGNATURE)) {
                 MidiDevice device = MidiSystem.getMidiDevice(info);
                 if (device.getMaxTransmitters() == -1) {
                     return device;
