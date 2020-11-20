@@ -38,7 +38,7 @@
         <java.version>1.6</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <lib.junit.version>4.11</lib.junit.version>
+        <lib.junit.version>4.13.1</lib.junit.version>
         <lib.mockito.version>1.9.5</lib.mockito.version>
 
         <plugin.compiler.version>3.1</plugin.compiler.version>
