@@ -1,4 +1,4 @@
-LP4J - A Launchpad API for Java
+LP4J - A Launchpad API for Java !
 ====
 
 [![Build Status](https://travis-ci.org/OlivierCroisier/LP4J.svg)](https://travis-ci.org/OlivierCroisier/LP4J)
